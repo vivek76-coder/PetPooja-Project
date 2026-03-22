@@ -1,1 +1,13 @@
 @import "tailwindcss";
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
+
+:root{
+  --cr:#FAF6F0;--ww:#FFF9F3;--tc:#C4693A;--tcl:#E8A882;--tcm:#F2DDD0;
+  --esp:#2C1A0E;--esm:#5C3D26;--esl:#9B7355;--gd:#C9A84C;--gdl:#E8D5A3;
+  --sg:#6B7C5E;--sgl:#B8C9AC;--ink:#1A1208;--mt:#8C7B6B;--sf:#FFF5EC;--dv:#E8D5C4;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--cr);color:var(--ink);min-height:100vh}
