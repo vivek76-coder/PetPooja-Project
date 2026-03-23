@@ -61,11 +61,6 @@ body {
 }
 
 /* APP LAYOUT */
-.app {
-  display: grid;
-  grid-template-columns: 210px 1fr;
-  min-height: 100vh
-}
 
 /* SIDEBAR */
 .sb {
