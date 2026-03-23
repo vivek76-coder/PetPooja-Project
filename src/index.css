@@ -219,13 +219,6 @@ body {
   border-radius: 20px
 }
 
-.sb-foot {
-  padding: 14px 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  display: flex;
-  align-items: center;
-  gap: 9px
-}
 
 .sb-av {
   width: 30px;

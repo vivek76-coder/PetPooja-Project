@@ -54,7 +54,7 @@ const Layout = () => {
     // States for Tabs and Theme and Menu
     const [activeTab, setActiveTab] = useState('Today');
     const [theme, setTheme] = useState('light');
-    const [menuOpenWidth, setMenuOpenWidth] = useState(250);
+    const [menuOpenWidth, setMenuOpenWidth] = useState(255);
 
     // Theme ko HTML tag par apply karna
     useEffect(() => {
@@ -66,13 +66,18 @@ const Layout = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
     };
     //Toggle Menu function
-    return (
+    const toggleMenu = ()=>{
+        steMenuOpenWidth(menuOpenWidth===250 ? 0 : 250)
+    }
+
+        return (
         <div className="">
             {/* --- SIDEBAR START --- */}
             {
 
                 <div className="sb fixed top-0 left-0 overflow-hidden" style={{
                     width: menuOpenWidth
+
                 }}>
                     <div className="sb-brand">
                         <div className="sb-icon">
@@ -110,14 +115,15 @@ const Layout = () => {
                     </div>
 
                     {/* Profile Section at bottom */}
-                    <div className="sb-foot">
+                    <div className="flex align-center justify-around  py-4! px-3! border-t border-slate-700">
                         <div className="sb-av">RA</div>
-                        <div>
-                            <div className="sb-un">Rahul Agarwal</div>
-                            <div className="sb-ur">Chain Manager</div>
+                            <div>
+                                <div className="sb-un">Rahul Agarwal</div>
+                                <div className="sb-ur">Chain Manager</div>
+                            </div>
+                          <button className='border border-gray-500 p-1! rounded! text-gray-500 shadow-md hover:bg-[#293240] hover:shadow-2xl'>LOGOUT</button>
                         </div>
                     </div>
-                </div>
             }
             {/* --- SIDEBAR END --- */}
 
@@ -159,11 +165,11 @@ const Layout = () => {
                             <div className="ndot"></div>
                         </div>
                         {/* menu Toggle*/}
-                        <button className='border border-gray-200 w-8 h-8 bg-gray-100 rounded-md dark:bg-slate-800'><i className="ri-menu-line"></i></button>
+                        <button className='nbt rounded-md! ' style={{ fontSize: 14, color: 'var(--mt)' }} onClick={()=>setMenuOpenWidth(menuOpenWidth===250? 0 : 250)}><i className="ri-menu-line"></i></button>
                     </div>
                 </div>
 
-                {/* Jahan alag-alag pages render honge (Home, POS etc.) */}
+                {/* pages render (Home, POS etc.) */}
                 <div className="page-content">
                     <Outlet />
                 </div>

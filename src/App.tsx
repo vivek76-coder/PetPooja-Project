@@ -2,17 +2,17 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'remixicon/fonts/remixicon.css';
 import './index.css';
 import Layout from './component/layout/Layout';
-import Dashboard from './pages/Dashboard';
-import POS from './pages/POS';
-import Orders from './pages/Orders';
-import Tables from './pages/Tables';
-import Menu from './pages/Menu';
-import Billing from './pages/Billing';
-import Inventory from './pages/Inventory';
-import Staff from './pages/Staff';
-import Reports from './pages/Reports';
-import CRM from './pages/CRM';
-import Settings from './pages/Settings';
+import Dashboard from './component/pages/Dashboard';
+import POS from './component/pages/POS';
+import Orders from './component/pages/Orders';
+import Tables from './component/pages/Tables';
+import Menu from './component/pages/Menu';
+import Billing from './component/pages/Billing';
+import Inventory from './component/pages/Inventory';
+import Staff from './component/pages/Staff';
+import Reports from './component/pages/Reports';
+import CRM from './component/pages/CRM';
+import Settings from './component/pages/Settings';
 
 const App = () => {
   return (
