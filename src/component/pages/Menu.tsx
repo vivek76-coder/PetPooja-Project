@@ -1,6 +1,12 @@
+import { menuItems } from "../../data/menuData";
+
 const Menu = () => {
+    // Group items by category
+    const categories = Array.from(new Set(menuItems.map(item => item.category)));
+
     return (
         <>
+            {/* menu header */}
             <div className="menu-head">
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', flex: 1 }}>
                     <div className="search-bar" style={{ flex: 'none' }}>
@@ -19,61 +25,46 @@ const Menu = () => {
                 </div>
             </div>
 
-            {/* Starters Section */}
-            <div style={{ marginBottom: 12 }}>
-                <div className="menu-cat-head">
-                    <span className="mch-name">Starters</span>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                        <span className="mch-count">6 items</span>
-                        <span style={{ fontSize: 10, color: 'var(--tc)', cursor: 'pointer', fontWeight: 500 }}>+ Add item</span>
-                    </div>
-                </div>
-                {[
-                    { name: 'Paneer Tikka', type: 'Veg · Starter', price: '₹260', trend: '↑ 4% this week', trendColor: 'var(--sg)', active: true },
-                    { name: 'Veg Spring Rolls', type: 'Veg · Starter', price: '₹180', trend: '— Stable', trendColor: 'var(--mt)', active: true },
-                    { name: 'Chicken 65', type: 'Non-Veg · Starter', price: '₹300', trend: 'Unavailable', trendColor: 'var(--mt)', active: false },
-                ].map((item) => (
-                    <div className="menu-item-row" key={item.name}>
-                        <div className={`mi-toggle ${item.active ? '' : 'off'}`}><div className="mi-toggle-dot"></div></div>
-                        <div>
-                            <div style={{ fontSize: 12, fontWeight: 500, color: item.active ? 'var(--ink)' : 'var(--mt)' }}>{item.name}</div>
-                            <div style={{ fontSize: 10, color: 'var(--mt)' }}>{item.type}</div>
+            {/* menu categories */}
+            {categories.map((cat) => {
+                const items = menuItems.filter(item => item.category === cat);
+                return (
+                    <div key={cat} style={{ marginBottom: 20 }}>
+                        <div className="menu-cat-head">
+                            {/* menu category name */}
+                            <span className="mch-name">{cat}</span>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                                {/* menu category count */}
+                                <span className="mch-count">{items.length} items</span>
+                                {/* add item button */}
+                                <span style={{ fontSize: 10, color: 'var(--tc)', cursor: 'pointer', fontWeight: 500 }}>+ Add item</span>
+                            </div>
                         </div>
-                        <div style={{ fontSize: 12, fontWeight: 500, color: item.active ? 'var(--ink)' : 'var(--mt)' }}>{item.price}</div>
-                        <div style={{ fontSize: 11, color: item.trendColor }}>{item.trend}</div>
-                        <div><span className={`pill ${item.active ? 'p-ready' : 'p-closed'}`}>{item.active ? 'Active' : 'Inactive'}</span></div>
-                        <div style={{ fontSize: 11, color: 'var(--tc)', cursor: 'pointer' }}>Edit</div>
-                    </div>
-                ))}
-            </div>
 
-            {/* Main Course Section */}
-            <div>
-                <div className="menu-cat-head">
-                    <span className="mch-name">Main Course</span>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                        <span className="mch-count">12 items</span>
-                        <span style={{ fontSize: 10, color: 'var(--tc)', cursor: 'pointer', fontWeight: 500 }}>+ Add item</span>
+                        {/* menu items */}
+                        {items.map((item) => (
+                            <div className="menu-item-row" key={item.name}>
+                                {/* menu item toggle */}
+                                <div className={`mi-toggle ${item.active ? '' : 'off'}`}><div className="mi-toggle-dot"></div></div>
+                                <div>
+                                    {/* menu item name */}
+                                    <div style={{ fontSize: 12, fontWeight: 500, color: item.active ? 'var(--ink)' : 'var(--mt)' }}>{item.name}</div>
+                                    {/* menu item type */}
+                                    <div style={{ fontSize: 10, color: 'var(--mt)' }}>{item.veg ? 'Veg' : 'Non-Veg'} · {cat}</div>
+                                </div>
+                                {/* menu item price */}
+                                <div style={{ fontSize: 12, fontWeight: 500, color: item.active ? 'var(--ink)' : 'var(--mt)' }}>{item.price}</div>
+                                {/* menu item trend */}
+                                <div style={{ fontSize: 11, color: item.trendColor || 'var(--mt)' }}>{item.trend || '— Stable'}</div>
+                                {/* menu item status */}
+                                <div><span className={`pill ${item.active ? 'p-ready' : 'p-closed'}`}>{item.active ? 'Active' : 'Inactive'}</span></div>
+                                {/* menu item edit */}
+                                <div style={{ fontSize: 11, color: 'var(--tc)', cursor: 'pointer' }}>Edit</div>
+                            </div>
+                        ))}
                     </div>
-                </div>
-                {[
-                    { name: 'Dal Makhani', type: 'Veg · Main', price: '₹280', trend: '↑ 18% this week', trendColor: 'var(--sg)' },
-                    { name: 'Butter Chicken', type: 'Non-Veg · Main', price: '₹320', trend: '↑ 11% this week', trendColor: 'var(--sg)' },
-                    { name: 'Palak Paneer', type: 'Veg · Main', price: '₹260', trend: '↓ 3% this week', trendColor: 'var(--tc)' },
-                ].map((item) => (
-                    <div className="menu-item-row" key={item.name}>
-                        <div className="mi-toggle"><div className="mi-toggle-dot"></div></div>
-                        <div>
-                            <div style={{ fontSize: 12, fontWeight: 500, color: 'var(--ink)' }}>{item.name}</div>
-                            <div style={{ fontSize: 10, color: 'var(--mt)' }}>{item.type}</div>
-                        </div>
-                        <div style={{ fontSize: 12, fontWeight: 500, color: 'var(--ink)' }}>{item.price}</div>
-                        <div style={{ fontSize: 11, color: item.trendColor }}>{item.trend}</div>
-                        <div><span className="pill p-ready">Active</span></div>
-                        <div style={{ fontSize: 11, color: 'var(--tc)', cursor: 'pointer' }}>Edit</div>
-                    </div>
-                ))}
-            </div>
+                );
+            })}
         </>
     );
 };

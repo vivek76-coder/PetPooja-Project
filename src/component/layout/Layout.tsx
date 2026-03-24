@@ -65,18 +65,16 @@ const Layout = () => {
     const handleToggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
     };
-    //Toggle Menu function
-    const toggleMenu = ()=>{
-        steMenuOpenWidth(menuOpenWidth===250 ? 0 : 250)
-    }
 
-        return (
+
+    return (
         <div className="">
             {/* --- SIDEBAR START --- */}
             {
 
-                <div className="sb fixed top-0 left-0 overflow-hidden" style={{
-                    width: menuOpenWidth
+                <div className="sb fixed top-0 left-0 overflow-x-hidden h-screen " style={{
+                    width: menuOpenWidth,
+                    transition: '0.5s'
 
                 }}>
                     <div className="sb-brand">
@@ -94,8 +92,8 @@ const Layout = () => {
                         <div className="sb-on">All Outlets <span>5 ▾</span></div>
                     </div>
 
-                    <div className="sb-nav overflow-y-auto">
-                        {/* Har section (Overview, Operations etc.) par loop chala rahe hain */}
+                    <div className="sb-nav">
+                        {/*section (Overview, Operations etc.)loop*/}
                         {navSections.map((section: any) => (
                             <div className="sb-sec" key={section.title}>
                                 <div className="sb-sl">{section.title}</div>
@@ -117,19 +115,21 @@ const Layout = () => {
                     {/* Profile Section at bottom */}
                     <div className="flex align-center justify-around  py-4! px-3! border-t border-slate-700">
                         <div className="sb-av">RA</div>
-                            <div>
-                                <div className="sb-un">Rahul Agarwal</div>
-                                <div className="sb-ur">Chain Manager</div>
-                            </div>
-                          <button className='border border-gray-500 p-1! rounded! text-gray-500 shadow-md hover:bg-[#293240] hover:shadow-2xl'>LOGOUT</button>
+                        <div>
+                            <div className="sb-un">Rahul Agarwal</div>
+                            <div className="sb-ur">Chain Manager</div>
                         </div>
+                        <button className='border border-gray-500 p-1! rounded! text-gray-500 shadow-md hover:bg-[#293240] hover:shadow-2xl'>LOGOUT</button>
                     </div>
+                </div>
             }
             {/* --- SIDEBAR END --- */}
 
             {/* --- MAIN CONTENT AREA --- */}
             <div className="main" style={{
-                marginLeft: menuOpenWidth
+                marginLeft: menuOpenWidth,
+                transition: '0.5s',
+
             }}>
                 {/* Header (Top bar) */}
                 <div className="topbar">
@@ -165,7 +165,7 @@ const Layout = () => {
                             <div className="ndot"></div>
                         </div>
                         {/* menu Toggle*/}
-                        <button className='nbt rounded-md! ' style={{ fontSize: 14, color: 'var(--mt)' }} onClick={()=>setMenuOpenWidth(menuOpenWidth===250? 0 : 250)}><i className="ri-menu-line"></i></button>
+                        <button className='nbt rounded-md! ' style={{ fontSize: 14, color: 'var(--mt)' }} onClick={() => setMenuOpenWidth(menuOpenWidth === 250 ? 0 : 250)}><i className="ri-menu-line"></i></button>
                     </div>
                 </div>
 
