@@ -1,4 +1,4 @@
-import { menuItems } from "../../data/menuData";
+import { menuItems } from "../../../data/menuData";
 
 const Menu = () => {
     // Group items by category

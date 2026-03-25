@@ -21,27 +21,27 @@ const navSections = [
     {
         title: 'Overview',
         items: [
-            { to: '/', label: 'Dashboard', icon: 'ri-dashboard-line' },
-            { to: '/reports', label: 'Reports', icon: 'ri-file-chart-line' },
+            { to: '/management', label: 'Dashboard', icon: 'ri-dashboard-line' },
+            { to: '/management/reports', label: 'Reports', icon: 'ri-file-chart-line' },
         ],
     },
     {
         title: 'Operations',
         items: [
-            { to: '/pos', label: 'POS / Billing', icon: 'ri-bank-card-line' },
-            { to: '/orders', label: 'Orders', icon: 'ri-shopping-cart-line' },
-            { to: '/tables', label: 'Tables', icon: 'ri-layout-grid-line' },
-            { to: '/menu', label: 'Menu', icon: 'ri-restaurant-line' },
-            { to: '/billing', label: 'Billing', icon: 'ri-money-dollar-circle-line' },
+            { to: '/management/pos', label: 'POS / Billing', icon: 'ri-bank-card-line' },
+            { to: '/management/orders', label: 'Orders', icon: 'ri-shopping-cart-line' },
+            { to: '/management/tables', label: 'Tables', icon: 'ri-layout-grid-line' },
+            { to: '/management/menu', label: 'Menu', icon: 'ri-restaurant-line' },
+            { to: '/management/billing', label: 'Billing', icon: 'ri-money-dollar-circle-line' },
         ],
     },
     {
         title: 'Management',
         items: [
-            { to: '/inventory', label: 'Inventory', icon: 'ri-shield-check-line' },
-            { to: '/staff', label: 'Staff', icon: 'ri-group-line' },
-            { to: '/crm', label: 'CRM', icon: 'ri-user-heart-line' },
-            { to: '/settings', label: 'Settings', icon: 'ri-settings-3-line' },
+            { to: '/management/inventory', label: 'Inventory', icon: 'ri-shield-check-line' },
+            { to: '/management/staff', label: 'Staff', icon: 'ri-group-line' },
+            { to: '/management/crm', label: 'CRM', icon: 'ri-user-heart-line' },
+            { to: '/management/settings', label: 'Settings', icon: 'ri-settings-3-line' },
         ],
     },
 ];

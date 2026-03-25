@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { menuItems } from "../../data/menuData";
+import { menuItems } from "../../../data/menuData";
 
 const POS = () => {
     const foodIcon = (
