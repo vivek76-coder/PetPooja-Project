@@ -7,6 +7,7 @@ const pageConfig: any = {
     '/take-order': { title: 'Take Order', sub: 'Place a new order for a table' },
     '/order-status': { title: 'Order Status', sub: 'Track your orders in kitchen' },
     '/table-requests': { title: 'Table Requests', sub: 'Customer service requests' },
+    '/manual-order': { title: 'Manual Order', sub: 'Create order by typing items manually' },
 };
 
 const navSections = [
@@ -21,6 +22,7 @@ const navSections = [
         items: [
             { to: '/waiter/my-tables', label: 'My Tables', icon: 'ri-layout-grid-line', badge: '6' },
             { to: '/waiter/take-order', label: 'Take Order', icon: 'ri-add-circle-line' },
+            { to: '/waiter/manual-order', label: 'Manual Order', icon: 'ri-edit-line' },
             { to: '/waiter/order-status', label: 'Order Status', icon: 'ri-loader-4-line', badge: '4' },
         ],
     },

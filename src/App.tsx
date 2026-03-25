@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'remixicon/fonts/remixicon.css';
 import './index.css';
+// login
+import Login from './component/login/Login';
 // management pages and layout
 import Layout from './component/management/layout/Layout';
 import Dashboard from './component/management/pages/Dashboard';
@@ -42,11 +44,15 @@ import MyTables from './component/waiter/pages/MyTables';
 import TakeOrder from './component/waiter/pages/TakeOrder';
 import OrderStatus from './component/waiter/pages/OrderStatus';
 import TableRequests from './component/waiter/pages/TableRequests';
+import ManualOrder from './component/waiter/pages/ManualOrder';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Login Route */}
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         {/* management Routes */}
         <Route path="/management" element={<Layout />}>
           <Route index element={<Dashboard />} />
@@ -92,6 +98,7 @@ const App = () => {
           <Route path="take-order" element={<TakeOrder />} />
           <Route path="order-status" element={<OrderStatus />} />
           <Route path="table-requests" element={<TableRequests />} />
+          <Route path="manual-order" element={<ManualOrder />} />
         </Route>
 
       </Routes>
