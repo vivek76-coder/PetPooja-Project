@@ -54,13 +54,13 @@ const Layout = () => {
     // States for Tabs and Theme and Menu
     const [activeTab, setActiveTab] = useState('Today');
     const [theme, setTheme] = useState('light');
-    const [menuOpenWidth, setMenuOpenWidth] = useState(255);
+    const [menuOpenWidth, setMenuOpenWidth] = useState(0);
+    const [renderBackbtn, setRenderBackbtn] = useState<boolean>(false)
 
     // Theme ko HTML tag par apply karna
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
     }, [theme]);
-
     // Theme switch karne wala function
     const handleToggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
@@ -133,9 +133,20 @@ const Layout = () => {
             }}>
                 {/* Header (Top bar) */}
                 <div className="topbar">
-                    <div>
-                        <div className="tp-title">{config.title}</div>
-                        <div className="tp-sub">{config.sub}</div>
+                    <div className='flex align-center gap-3' >
+                        <button className='nbt w-12! h-12!' style={{
+                            display: renderBackbtn ? 'block' : 'none',
+                            transition: '0.5s'
+                        }} onClick={() => {
+                            setMenuOpenWidth(0);
+                            setRenderBackbtn(false);
+                        }}>
+                            <i className="ri-arrow-left-line"></i>
+                        </button>
+                        <div>
+                            <div className="tp-title">{config.title}</div>
+                            <div className="tp-sub">{config.sub}</div>
+                        </div>
                     </div>
 
                     <div className="tp-r">
@@ -164,8 +175,7 @@ const Layout = () => {
                             <i className="ri-notification-3-line" style={{ fontSize: 14, color: 'var(--mt)' }}></i>
                             <div className="ndot"></div>
                         </div>
-                        {/* menu Toggle*/}
-                        <button className='nbt rounded-md! ' style={{ fontSize: 14, color: 'var(--mt)' }} onClick={() => setMenuOpenWidth(menuOpenWidth === 250 ? 0 : 250)}><i className="ri-menu-line"></i></button>
+                        <button className='nbt rounded-md! ' style={{ fontSize: 14, color: 'var(--mt)' }} onClick={() => { setMenuOpenWidth(menuOpenWidth === 250 ? 0 : 250); setRenderBackbtn(!renderBackbtn); }}><i className="ri-menu-line"></i></button>
                     </div>
                 </div>
 

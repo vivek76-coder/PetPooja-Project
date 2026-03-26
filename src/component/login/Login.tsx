@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+interface demoUsersInterface {
+    password: string;
+    name: string;
+    redirect: string
+}
 
 /* ── Demo credentials per role ── */
-const demoUsers: Record<string, { password: string; name: string; redirect: string }> = {
+const demoUsers: Record<string, demoUsersInterface> = {
     admin: { password: 'admin123', name: 'Rahul Verma', redirect: '/management' },
     manager: { password: 'manager123', name: 'Priya Sharma', redirect: '/manager' },
     cashier: { password: 'cashier123', name: 'Amit Desai', redirect: '/cashier' },
@@ -70,63 +75,12 @@ const Login = () => {
             </div>
 
             <div className="login-container">
-                {/* ── Left Panel — Branding ── */}
-                <div className="login-left">
-                    <div className="login-left-content">
-                        {/* Logo */}
-                        <div className="login-logo">
-                            <div className="login-logo-icon">
-                                <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
-                                    <path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <div className="login-brand-name">Petpooja</div>
-                                <div className="login-brand-tag">Restaurant Management</div>
-                            </div>
-                        </div>
-
-                        {/* Hero text */}
-                        <div className="login-hero">
-                            <h1 className="login-hero-title">
-                                Manage your<br />
-                                restaurant<br />
-                                <span className="login-hero-accent">smarter.</span>
-                            </h1>
-                            <p className="login-hero-desc">
-                                POS, Kitchen, Tables, Billing, Staff — everything in one beautiful dashboard.
-                            </p>
-                        </div>
-
-                        {/* Stats */}
-                        <div className="login-stats">
-                            <div className="login-stat">
-                                <div className="login-stat-val">5</div>
-                                <div className="login-stat-label">Outlets</div>
-                            </div>
-                            <div className="login-stat-divider"></div>
-                            <div className="login-stat">
-                                <div className="login-stat-val">₹5.4L</div>
-                                <div className="login-stat-label">Today's Revenue</div>
-                            </div>
-                            <div className="login-stat-divider"></div>
-                            <div className="login-stat">
-                                <div className="login-stat-val">47</div>
-                                <div className="login-stat-label">Live Orders</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="login-left-footer">
-                        © 2026 Petpooja · Built with ❤️ for restaurants
-                    </div>
-                </div>
-
                 {/* ── Right Panel — Login Form ── */}
                 <div className="login-right">
                     <div className="login-form-wrapper">
                         {/* Header */}
                         <div className="login-form-header">
-                            <h2 className="login-form-title">Welcome back</h2>
+                            <h2 className="login-form-title">PetPooja</h2>
                             <p className="login-form-sub">Sign in to your account to continue</p>
                         </div>
 
@@ -201,29 +155,6 @@ const Login = () => {
                                 )}
                             </button>
                         </form>
-
-                        {/* Divider */}
-                        <div className="login-divider">
-                            <span>or quick login as</span>
-                        </div>
-
-                        {/* Quick Login Cards */}
-                        <div className="login-quick-roles">
-                            {roles.map(role => (
-                                <button
-                                    key={role.key}
-                                    onClick={() => handleQuickLogin(role.key)}
-                                    className={`login-role-card ${selectedRole === role.key ? 'active' : ''}`}
-                                    style={{ '--role-color': role.color } as React.CSSProperties}
-                                >
-                                    <div className="login-role-icon">
-                                        <i className={role.icon}></i>
-                                    </div>
-                                    <span className="login-role-label">{role.label}</span>
-                                </button>
-                            ))}
-                        </div>
-
                         {/* Credentials Hint */}
                         <div className="login-hint">
                             <i className="ri-information-line"></i>

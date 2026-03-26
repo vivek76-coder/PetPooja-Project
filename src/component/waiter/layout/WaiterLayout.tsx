@@ -40,7 +40,8 @@ const WaiterLayout = () => {
     const config = pageConfig[path] || pageConfig['/'];
 
     const [theme, setTheme] = useState('light');
-    const [sidebarWidth, setSidebarWidth] = useState(230);
+    const [sidebarWidth, setSidebarWidth] = useState(0);
+    const [renderBackbtn, setRenderBackbtn] = useState<boolean>(false);
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
@@ -62,7 +63,7 @@ const WaiterLayout = () => {
 
                 <div className="sb-outlet">
                     <div className="sb-ol">Current outlet</div>
-                    <div className="sb-on">Koregaon Park <span>▾</span></div>
+                    <div className="sb-on">Koregaon Park</div>
                 </div>
 
                 <div className="sb-nav">
@@ -98,9 +99,20 @@ const WaiterLayout = () => {
             {/* MAIN */}
             <div className="main" style={{ marginLeft: sidebarWidth, transition: '0.4s' }}>
                 <div className="topbar">
-                    <div>
-                        <div className="tp-title">{config.title}</div>
-                        <div className="tp-sub">{config.sub}</div>
+                    <div className='flex align-center gap-3' >
+                        <button className='nbt w-12! h-12!' style={{
+                            display: renderBackbtn ? 'block' : 'none',
+                            transition: '0.5s'
+                        }} onClick={() => {
+                            setSidebarWidth(0);
+                            setRenderBackbtn(false);
+                        }}>
+                            <i className="ri-arrow-left-line"></i>
+                        </button>
+                        <div>
+                            <div className="tp-title">{config.title}</div>
+                            <div className="tp-sub">{config.sub}</div>
+                        </div>
                     </div>
                     <div className="tp-r">
                         <div className="nbt" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} title="Toggle Theme">
@@ -110,7 +122,7 @@ const WaiterLayout = () => {
                             <i className="ri-notification-3-line" style={{ fontSize: 14, color: 'var(--mt)' }}></i>
                             <div className="ndot"></div>
                         </div>
-                        <button className='nbt rounded-md!' style={{ fontSize: 14, color: 'var(--mt)' }} onClick={() => setSidebarWidth(sidebarWidth === 230 ? 0 : 230)}>
+                        <button className='nbt rounded-md!' style={{ fontSize: 14, color: 'var(--mt)' }} onClick={() => { setSidebarWidth(sidebarWidth === 230 ? 0 : 230); setRenderBackbtn(!renderBackbtn); }}>
                             <i className="ri-menu-line"></i>
                         </button>
                     </div>
